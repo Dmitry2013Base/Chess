@@ -1,0 +1,94 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@*<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+*@
+
+<link rel="stylesheet" href="~/css/Chess.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/overcast/jquery-ui.css" />
+
+<script src="/lib/my/jquery.countdown.js"></script>
+<section>
+    <h1>Быстрая игра</h1>
+    <div class="container">
+        <div class="row game">
+          <div class="col flex col-lg-4 col-md-6 col-sm-12 setting-item">
+            <div class="setting-game flex">
+              <div class="game-item">
+                <p><b>Название</b></p>
+              </div>
+              <div class="game-item">
+                <p><b>Время</b></p>
+              </div>
+              <div class="game-item">
+                <p><b>Противник</b></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col flex col-lg-4 col-md-6 col-sm-12 setting-item">
+            <div class="setting-game flex">
+              <div class="game-item">
+                <p>Bullet</p>
+              </div>
+              <div class="game-item">
+                <p class="times">2+1</p>
+              </div>
+              <div class="game-item">
+                <p>Сыграть с другом</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col flex col-lg-4 col-md-6 col-sm-12 setting-item">
+            <div class="setting-game flex">
+              <div class="game-item">
+                <p>Blitz</p>
+              </div>
+              <div class="game-item">
+                <p class ="times>">3+2</p>
+              </div>
+              <div class="game-item">
+                        <p>Сыграть с другом</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col flex col-lg-4 col-md-6 col-sm-12 setting-item">
+            <div class="setting-game flex">
+              <div class="game-item">
+                <p>Rapid</p>
+              </div>
+              <div class="game-item">
+                <p class="times">10+5</p>
+              </div>
+              <div class="game-item">
+                <p>Сыграть с другом</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col flex col-lg-4 col-md-6 col-sm-12 setting-item">
+            <div class="setting-game flex">
+              <div class="game-item">
+                <p>Classical</p>
+              </div>
+              <div class="game-item">
+                <p class="times">30+20</p>
+              </div>
+              <div class="game-item">
+                <p>Сыграть с другом</p>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</section>
+
+<script src="/js/GuestRoom.js"></script>

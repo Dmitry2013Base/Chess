@@ -1,0 +1,458 @@
+html,
+body {
+    margin: 0;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+}
+
+.body-cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-container {
+    width: 100px;
+}
+
+.flex {
+    display: flex;
+}
+
+.container {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.cont-item {
+    padding: 0;
+    margin-top: 50px;
+}
+
+.field-container {
+    width: 640px;
+    height: 640px;
+    background-color: gray;
+    flex-wrap: wrap;
+}
+
+.field-cell {
+    width: 80px;
+    height: 80px;
+    outline: 1px solid red;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.field-cell-white {
+    background-color: rgb(255, 241, 223);
+}
+
+.field-cell-black {
+    background-color: rgb(255, 189, 103);
+}
+
+.field-cell-circle {
+    position: absolute;
+    top: calc(50% - 10px);
+    left: calc(50% - 10px);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgb(69, 121, 69);
+    display: none;
+}
+
+.visible {
+    display: inherit !important;
+}
+
+img {
+    width: 80px;
+    height: 80px;
+}
+
+.figure,
+.figure-enemy {
+    z-index: 1;
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+}
+
+.figure-enemy {
+    z-index: 0 !important;
+}
+
+.pawn-white {
+    background-image: url(/Spirits/Pawn.png);
+}
+
+.rook-white {
+    background-image: url(/Spirits/Rook.png);
+}
+
+.elephant-white {
+    background-image: url(/Spirits/Bishop.png);
+}
+
+.horse-white {
+    background-image: url(/Spirits/Horse.png);
+}
+
+.queen-white {
+    background-image: url(/Spirits/Queen.png);
+}
+
+.king-white {
+    background-image: url(/Spirits/King.png);
+}
+
+.pawn-black {
+    background-image: url(/Spirits/Pawn-black.png);
+}
+
+.rook-black {
+    background-image: url(/Spirits/Rook-black.png);
+}
+
+.elephant-black {
+    background-image: url(/Spirits/Bishop-black.png);
+}
+
+.horse-black {
+    background-image: url(/Spirits/Horse-black.png);
+}
+
+.queen-black {
+    background-image: url(/Spirits/Queen-black.png);
+}
+
+.king-black {
+    background-image: url(/Spirits/King-black.png);
+}
+
+.attack {
+    display: none;
+}
+
+.triangle {
+    position: absolute;
+    border-top: 20px solid rgb(69, 121, 69);
+    border-left: 20px solid transparent;
+}
+
+.triangle-top-right {
+    top: 0;
+    right: 0;
+}
+
+.triangle-top-left {
+    top: 0;
+    left: 0;
+    rotate: -90deg;
+}
+
+.triangle-bottom-right {
+    bottom: 0;
+    right: 0;
+    rotate: 90deg;
+}
+
+.triangle-bottom-left {
+    bottom: 0;
+    left: 0;
+    rotate: 180deg;
+}
+
+.front-users {
+    height: 640px;
+    flex-direction: column;
+    grid-gap: 5px;
+}
+
+.user {
+    width: 290px;
+    height: 100px;
+    padding: 5px;
+    background-color: rgb(250, 242, 232);
+    flex-direction: column;
+    justify-content: space-between;
+    outline: 1px solid black;
+}
+
+.user-my {
+    flex-direction: column-reverse;
+    height: 120px
+}
+
+.timer {
+    margin: 0;
+    font-size: 35px;
+}
+
+.user-name {
+    margin: 0;
+    font-size: 25px;
+}
+
+.game-logs {
+    position: relative;
+    width: 290px;
+    height: 410px;
+    background-color: transparent;
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: 1px solid black;
+    padding: 0;
+}
+
+.log-container {
+    height: 25px;
+    background-color: rgb(250, 242, 232);
+    border-bottom: 1px solid black;
+}
+
+.logs-cont {
+    width: 100%;
+}
+
+.log-index {
+    width: 12%;
+    height: 100%;
+    border-right: 1px solid black;
+}
+
+.log-message {
+    width: 46%;
+    height: 100%;
+}
+
+/*.log-text:hover {
+    cursor: pointer;
+    scale: 1.2;
+    transition: scale linear 0.1s;
+}*/
+
+.log-message:not(:last-child) {
+    border-right: 1px solid black;
+}
+
+.index,
+.log-text {
+    margin: 0;
+    text-align: center;
+    display: block;
+}
+
+.user-buttons {
+    justify-content: space-around;
+}
+
+.icon-btn {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+}
+
+.icon-btn:hover {
+    cursor: pointer;
+    scale: 1.4;
+}
+
+.btn-img {
+    width: 17px;
+    height: 17px;
+}
+
+.flag-img {
+    width: 25px;
+    height: 25px;
+}
+
+.message {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgb(250, 242, 232);
+    outline: 1px solid black;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.message-visible {
+    display: inherit;
+}
+
+.mes {
+    margin: 5px;
+}
+
+.message-btns {
+    margin-bottom: 5px;
+    display: none;
+}
+
+.message-btn {
+    border: none;
+    background-color: transparent;
+}
+
+.message-btn:hover {
+    color: black;
+    cursor: pointer;
+}
+
+.btn-yes {
+    color: green;
+}
+
+.btn-no {
+    color: red;
+}
+
+.alert {
+    position: absolute;
+    padding: 0;
+    top: 85%;
+    left: calc(50% - 200px);
+    width: fit-content;
+    background-color: black;
+    border-radius: 10px;
+    z-index: 10;
+    display: none;
+}
+
+.alert p {
+    margin: 0;
+    padding: 5px 15px;
+    font-size: 25px;
+    color: white;
+}
+
+.alert-visible {
+    display: inherit;
+}
+
+.figure,
+.figure-choice {
+    z-index: 1;
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+}
+
+.choice {
+    position: absolute;
+    top: 400px;
+    left: calc(50% - 170px);
+    justify-content: center;
+    align-items: center;
+    width: 340px;
+    height: 100px;
+    background-color: #e9a700;
+    border-radius: 10px;
+    border: 1px solid black;
+    z-index: 3;
+    display: none;
+}
+
+.choice-visible {
+    display: flex;
+}
+
+.figure-choice {
+    position: relative;
+}
+
+.figure-choice:hover {
+    outline: 1px solid black;
+}
+
+.game {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+}
+
+.setting-item {
+    flex-wrap: wrap;
+    flex-shrink: 0;
+    width: 100%;
+    padding: 0;
+}
+
+.setting-game:hover {
+    cursor: pointer;
+    background-color: rgb(248, 212, 169);
+}
+
+.setting-game {
+    position: relative;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 35px;
+    border: 1px solid black;
+}
+
+.setting-game:not(:last-child) {
+    border-bottom: none;
+}
+
+.setting-item:nth-child(2n + 1) {
+    background-color: rgb(250, 221, 166);
+}
+
+.game-item {
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+}
+
+.game-item:not(:last-child) {
+    border-right: 2px solid black;
+}
+
+.game-item p {
+    margin: 0;
+}
+
+.game-name {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.gameover {
+    position:absolute;
+    top: 60px;
+    width: 100%;
+    height: calc(100% - 60px);
+    background-color: transparent;
+    z-index: 2;
+    display: none;
+}
+
+.gameover-visible {
+    display: inherit !important;
+}
+
+.name-not-visible {
+    display: none;
+}

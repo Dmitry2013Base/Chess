@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="~/css/Chess.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/overcast/jquery-ui.css" />
+    <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css" />
+    <script src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js"></script>
+    <script src="/lib/my/jquery.countdown.js"></script>
+</head>
+<body>
+    
+    @model IPlayer
+
+    @{
+        List<ICell>? field = Model?.Front?.Field;
+        List<Figure>? figures = Model?.Game?.Setting?.Figures;
+        string? timer = Model?.Front?.Timer?.Time;
+        var colorFigures = Model?.Front?.Color;
+        var player = GameChess.Models.Games.GameCollecton.players.FirstOrDefault(e => e.Game == Model?.Game && e.Id != Model?.Id);
+    }
+
+    @if (Model?.Game != null)
+    {
+        <a id="game-id" href="/api/Game/Join/@Model?.Game.Id"></a>
+        <input id="userId" type="text" value="@Model?.Id" hidden/>
+        <input id="game-id2" value="@Model?.Game.Id" hidden/>
+    }   
+
+    <section class="container flex">
+        <div class="gameover"></div>
+        <div class="row">
+            <div class="col-lg-8 col-md-12 col-sm-12 cont-item">
+                <section class="field-container flex body-cont">
+                    @for (int i = 0; i < field?.Count; i++)
+                    {
+                        <div name="@field[i].Name" class="field-cell field-cell-@field[i].Color.ToString().ToLower()">
+                            <div class="field-cell-circle"></div>
+
+                            <div class="attack">
+                                <span class="triangle triangle-top-right"></span>
+                                <span class="triangle triangle-top-left"></span>
+                                <span class="triangle triangle-bottom-right"></span>
+                                <span class="triangle triangle-bottom-left"></span>
+                            </div>
+
+                            <div class="field-cell-name">@field[i].Name</div>
+                        </div>
+                    }
+
+                    @for (int i = 0; i < figures?.Count; i++)
+                    {
+                        var color = figures[i].Color.ToString().ToLower();
+
+                        if (figures[i].Color != Model?.Front?.Color)
+                        {
+                            <div id="@figures[i].Id" class="@figures[i].Name-@color figure-enemy @figures[i].CurrentCell"></div>
+                        }
+                        else
+                        {
+                            <div id="@figures[i].Id" class="@figures[i].Name-@color figure @figures[i].CurrentCell"></div>
+                        }
+                    }
+                </section>
+            </div>
+
+            <div class="col-lg-4 col-md-12 col-sm-12 cont-item">
+                <section class="front-users flex container">
+                    <div class="row">
+                        <div class="user flex">
+                            <label id="clock-1" class="timer"></label>
+                            <label id="userName-1" class="user-name">@player</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="game-logs flex" data-simplebar>
+                            <div class="fluid-container logs-cont">
+                                <div id="logs" class="row">
+                                </div>
+                            </div>
+
+                            <span id="white" hidden>Белые победили!</span>
+                            <span id="black" hidden>Черные победили!</span>
+                            <span id="draw" hidden>Ничья!</span>
+
+                            <div class="message flex">
+                                <label class="mes"></label>
+                                <div class="message-btns">
+                                    <button class="message-btn btn-yes">Да</button>
+                                    <button class="message-btn btn-no">Нет</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="user user-my flex">
+                            <label id="userName-0" class="user-name">@Model?.Name</label>
+
+                            <div class="user-buttons flex">
+                                <button id="arrow" class="icon-btn" hidden>
+                                    <img class="btn-img" src="/Spirits/arrow.png" alt="Попросить отменить ход">
+                                    <span hidden>Противник просит отменить ход! Отменить?</span>
+                                </button>
+                                <button id="hand" class="icon-btn" hidden>
+                                    <img class="btn-img" src="/Spirits/hand.png" alt="Предложить ничью">
+                                    <span hidden>Противник предлагает ничью! Согласиться?</span>
+                                </button>
+                                <button id="leave" class="icon-btn">
+                                    <img class="btn-img flag-img" src="/Spirits/flag.png" alt="Сдаться" title="Сдаться" />
+                                </button>
+                                <button id="btn-copy" class="icon-btn">
+                                    <img class="btn-img" src="/Spirits/copy.png" alt="Копировать ссылку" title="Копировать ссылку на игру">
+                                </button>
+                            </div>
+
+                            <label id="clock-0" class="timer"></label>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+
+    <div class="alert">
+        <p>Ссылка на игру скопированна!</p>
+    </div>
+
+    <div class="choice flex">
+        <div class="elephant-white figure-choice"></div>
+        <div class="horse-white figure-choice"></div>
+        <div class="queen-white figure-choice"></div>
+        <div class="rook-white figure-choice"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="~/js/Game.js"></script>
+</body>
+</html>
